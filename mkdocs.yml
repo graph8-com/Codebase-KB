@@ -1,0 +1,30 @@
+site_name: UUI Campaign & Sequencer Docs
+nav:
+  - Home: index.md
+  - GoAI Campaign: 01_goai_campaign.md
+  - GoAI Campaign Step: 02_goai_campaign_step.md
+  - GoAI Campaign Message: 03_goai_campaign_message.md
+  - Engage Sequence: 04_engage_sequence.md
+  - Engage Sequence Step: 05_engage_sequence_step.md
+  - Engage Sequence Step Content: 06_engage_sequence_step_content.md
+  - Engage Sequence Membership: 07_engage_sequence_membership.md
+  - Engage Sequence Event: 08_engage_sequence_event.md
+  - Engage Sequence OAuth Credential: 09_engage_sequence_oauth_credential.md
+docs_dir: output/uui
+site_dir: site
+theme:
+  name: material
+  palette:
+    primary: 'blue'
+    accent: 'light blue'
+  font:
+    text: Roboto
+    code: Roboto Mono
+markdown_extensions:
+  - toc
+  - admonition
+  - codehilite
+  - footnotes
+  - meta
+  - tables
+  - pymdownx.superfences

@@ -25,14 +25,22 @@ logger.addHandler(file_handler)
 cache_file = "llm_cache.json"
 
 
-# By default, we Google Gemini 2.5 pro, as it shows great performance for code understanding
-def call_llm(prompt: str, use_cache: bool = True) -> str:
-    # Log the prompt
+# Use Google Gemini with chunking for large prompts
+
+def _approx_token_count(text):
+    # Rough estimate: 1 word ≈ 1.3 tokens for code/text
+    return int(len(text.split()) * 1.3)
+
+def _chunk_text(text, max_tokens=600_000):
+    words = text.split()
+    chunk_size = int(max_tokens / 1.3)  # convert tokens to words
+    return [" ".join(words[i:i+chunk_size]) for i in range(0, len(words), chunk_size)]
+
+def call_llm(prompt, use_cache: bool = True):
     logger.info(f"PROMPT: {prompt}")
 
     # Check cache if enabled
     if use_cache:
-        # Load cache from disk
         cache = {}
         if os.path.exists(cache_file):
             try:
@@ -40,36 +48,30 @@ def call_llm(prompt: str, use_cache: bool = True) -> str:
                     cache = json.load(f)
             except:
                 logger.warning(f"Failed to load cache, starting with empty cache")
-
-        # Return from cache if exists
         if prompt in cache:
             logger.info(f"RESPONSE: {cache[prompt]}")
             return cache[prompt]
 
-    # # Call the LLM if not in cache or cache disabled
-    # client = genai.Client(
-    #     vertexai=True,
-    #     # TODO: change to your own project id and location
-    #     project=os.getenv("GEMINI_PROJECT_ID", "your-project-id"),
-    #     location=os.getenv("GEMINI_LOCATION", "us-central1")
-    # )
+    client = genai.Client(api_key=os.getenv("GEMINI_API_KEY", ""))
+    model = os.getenv("GEMINI_MODEL", "gemini-1.5-pro-latest")
 
-    # You can comment the previous line and use the AI Studio key instead:
-    client = genai.Client(
-        api_key=os.getenv("GEMINI_API_KEY", ""),
-    )
-    model = os.getenv("GEMINI_MODEL", "gemini-2.5-pro-exp-03-25")
-    # model = os.getenv("GEMINI_MODEL", "gemini-2.5-flash-preview-04-17")
-    
-    response = client.models.generate_content(model=model, contents=[prompt])
-    response_text = response.text
+    # Chunk if too large
+    token_count = _approx_token_count(prompt)
+    if token_count > 600_000:
+        chunks = _chunk_text(prompt, max_tokens=600_000)
+        responses = []
+        for idx, chunk in enumerate(chunks):
+            logger.info(f"Sending chunk {idx+1}/{len(chunks)} to Gemini, size: {_approx_token_count(chunk)} tokens")
+            resp = client.models.generate_content(model=model, contents=[chunk])
+            responses.append(resp.text)
+        response_text = "\n".join(responses)
+    else:
+        resp = client.models.generate_content(model=model, contents=[prompt])
+        response_text = resp.text
 
-    # Log the response
     logger.info(f"RESPONSE: {response_text}")
 
-    # Update cache if enabled
     if use_cache:
-        # Load cache again to avoid overwrites
         cache = {}
         if os.path.exists(cache_file):
             try:
@@ -77,8 +79,6 @@ def call_llm(prompt: str, use_cache: bool = True) -> str:
                     cache = json.load(f)
             except:
                 pass
-
-        # Add to cache and save
         cache[prompt] = response_text
         try:
             with open(cache_file, "w") as f:
