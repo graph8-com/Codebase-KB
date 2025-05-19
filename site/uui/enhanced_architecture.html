@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Component Architecture Visualization</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.0.2/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        .mermaid {
+            margin: 30px 0;
+            overflow: auto;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .component-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .component-card h3 {
+            margin-top: 0;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 8px;
+        }
+        .relationship-type {
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            padding: 2px 6px;
+            margin-right: 5px;
+            font-size: 0.85em;
+            color: #555;
+        }
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+        .tab.active {
+            border: 1px solid #ddd;
+            border-bottom: 1px solid white;
+            border-radius: 4px 4px 0 0;
+            margin-bottom: -1px;
+            font-weight: bold;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Component Architecture Visualization</h1>
+    
+    <div class="tabs">
+        <div class="tab active" onclick="switchTab('tab-diagram')">Architecture Diagram</div>
+        <div class="tab" onclick="switchTab('tab-components')">Component Details</div>
+        <div class="tab" onclick="switchTab('tab-relationships')">Relationship Matrix</div>
+    </div>
+    
+    <div id="tab-diagram" class="tab-content active">
+        <h2>System Architecture Diagram</h2>
+        <p>This diagram shows the key components and their relationships in the system:</p>
+        
+        <div class="mermaid">
+        flowchart TD
+            classDef component fill:#e6f3ff,stroke:#3498db,stroke-width:2px
+            classDef highlight fill:#fff8e6,stroke:#f39c12,stroke-width:2px
+            
+            A0["GoAI Campaign"] --> |"Has many"| A1["GoAI Campaign Step"]
+            A0 --> |"Has many"| A2["GoAI Campaign Message"]
+            A1 --> |"Belongs to"| A0
+            
+            A3["Engage Sequence"] --> |"Has many"| A4["Engage Sequence Step"]
+            A3 --> |"Has many"| A5["Engage Sequence Membership"]
+            A3 --> |"Has many"| A8["Engage Sequence OAuth Credential"]
+            
+            A4 --> |"Belongs to"| A3
+            A4 --> |"Has many"| A7["Engage Sequence Step Content"]
+            A4 --> |"Has many"| A6["Engage Sequence Event"]
+            
+            A5 --> |"Belongs to"| A3
+            A5 --> |"Has current"| A4
+            A5 --> |"Has many"| A6
+            
+            A6 --> |"Belongs to"| A5
+            A7 --> |"Belongs to"| A4
+            A8 --> |"Belongs to"| A3
+            
+            class A0,A1,A2,A3,A4,A5,A6,A7,A8 component
+            class A3,A4,A5 highlight
+        </div>
+        
+        <h3>Alternative Visualization (Component-Centric)</h3>
+        <div class="mermaid">
+        flowchart LR
+            classDef primary fill:#e6f3ff,stroke:#3498db,stroke-width:2px,color:#333
+            classDef secondary fill:#f5f5f5,stroke:#95a5a6,stroke-width:1px,color:#555
+            
+            subgraph Campaign["Campaign Management"]
+                A0["GoAI Campaign"]
+                A1["Campaign Step"]
+                A2["Campaign Message"]
+            end
+            
+            subgraph Sequence["Sequence Engine"]
+                A3["Engage Sequence"]
+                A4["Sequence Step"]
+                A7["Step Content"]
+            end
+            
+            subgraph Membership["Membership Tracking"]
+                A5["Sequence Membership"]
+                A6["Sequence Event"]
+            end
+            
+            subgraph Auth["Authentication"]
+                A8["OAuth Credential"]
+            end
+            
+            A0 <--> A1
+            A0 <--> A2
+            
+            A3 <--> A4
+            A3 <--> A5
+            A3 <--> A8
+            
+            A4 <--> A7
+            A4 <--> A6
+            
+            A5 <--> A4
+            A5 <--> A6
+            
+            Campaign -.-> Sequence
+            Sequence -.-> Membership
+            Sequence -.-> Auth
+            
+            class A0,A1,A2,A3,A4,A5,A6,A7,A8 secondary
+            class Campaign,Sequence,Membership,Auth primary
+        </div>
+    </div>
+    
+    <div id="tab-components" class="tab-content">
+        <h2>Component Details</h2>
+        
+        <div class="component-card">
+            <h3>GoAI Campaign</h3>
+            <p>A blueprint for automated communication sequences. Defines the overall structure and purpose of a communication campaign, containing multiple steps and messages.</p>
+            <p><strong>Responsibilities:</strong></p>
+            <ul>
+                <li>Define campaign structure and goals</li>
+                <li>Organize campaign steps in logical sequence</li>
+                <li>Manage campaign lifecycle (draft, active, completed)</li>
+            </ul>
+        </div>
+        
+        <div class="component-card">
+            <h3>Engage Sequence</h3>
+            <p>The core execution engine for automated, multi-step communication workflows. Similar to an email drip campaign system, it manages the enrollment of contacts and the execution of sequence steps according to defined rules and timing.</p>
+            <p><strong>Responsibilities:</strong></p>
+            <ul>
+                <li>Manage the lifecycle of communication sequences</li>
+                <li>Coordinate the execution of sequence steps</li>
+                <li>Track enrollment status of contacts</li>
+                <li>Handle authentication for external services</li>
+            </ul>
+        </div>
+        
+        <div class="component-card">
+            <h3>Engage Sequence Step</h3>
+            <p>Individual actions within a sequence, such as sending an email, SMS, or making a call. Each step has specific timing rules (immediate, delay in minutes/days) and content.</p>
+            <p><strong>Responsibilities:</strong></p>
+            <ul>
+                <li>Define the type of communication (email, SMS, etc.)</li>
+                <li>Specify timing rules (when to execute)</li>
+                <li>Link to specific content to be delivered</li>
+                <li>Track execution events</li>
+            </ul>
+        </div>
+        
+        <div class="component-card">
+            <h3>Engage Sequence Membership</h3>
+            <p>Tracks the enrollment of contacts in sequences and their progress through the sequence steps. Acts as a join table between contacts and sequences.</p>
+            <p><strong>Responsibilities:</strong></p>
+            <ul>
+                <li>Manage contact enrollment in sequences</li>
+                <li>Track current step for each contact</li>
+                <li>Record sequence events for analytics</li>
+                <li>Handle membership status (active, paused, completed)</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div id="tab-relationships" class="tab-content">
+        <h2>Component Relationship Matrix</h2>
+        
+        <table border="1" style="border-collapse: collapse; width: 100%;">
+            <thead>
+                <tr style="background-color: #f8f9fa;">
+                    <th style="padding: 10px; text-align: left;">From Component</th>
+                    <th style="padding: 10px; text-align: left;">To Component</th>
+                    <th style="padding: 10px; text-align: left;">Relationship Type</th>
+                    <th style="padding: 10px; text-align: left;">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="padding: 10px;">GoAI Campaign</td>
+                    <td style="padding: 10px;">GoAI Campaign Step</td>
+                    <td style="padding: 10px;"><span class="relationship-type">Has many</span></td>
+                    <td style="padding: 10px;">A campaign consists of multiple ordered steps</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px;">GoAI Campaign</td>
+                    <td style="padding: 10px;">GoAI Campaign Message</td>
+                    <td style="padding: 10px;"><span class="relationship-type">Has many</span></td>
+                    <td style="padding: 10px;">A campaign contains multiple message templates</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px;">Engage Sequence</td>
+                    <td style="padding: 10px;">Engage Sequence Step</td>
+                    <td style="padding: 10px;"><span class="relationship-type">Has many</span></td>
+                    <td style="padding: 10px;">A sequence consists of multiple executable steps</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px;">Engage Sequence</td>
+                    <td style="padding: 10px;">Engage Sequence Membership</td>
+                    <td style="padding: 10px;"><span class="relationship-type">Has many</span></td>
+                    <td style="padding: 10px;">A sequence can have multiple enrolled contacts</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px;">Engage Sequence Step</td>
+                    <td style="padding: 10px;">Engage Sequence Step Content</td>
+                    <td style="padding: 10px;"><span class="relationship-type">Has many</span></td>
+                    <td style="padding: 10px;">A step can have different content variations</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px;">Engage Sequence Membership</td>
+                    <td style="padding: 10px;">Engage Sequence Event</td>
+                    <td style="padding: 10px;"><span class="relationship-type">Has many</span></td>
+                    <td style="padding: 10px;">A membership generates events as it progresses</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px;">Engage Sequence Membership</td>
+                    <td style="padding: 10px;">Engage Sequence Step</td>
+                    <td style="padding: 10px;"><span class="relationship-type">Has current</span></td>
+                    <td style="padding: 10px;">A membership tracks which step a contact is currently on</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px;">Engage Sequence Step</td>
+                    <td style="padding: 10px;">Engage Sequence Event</td>
+                    <td style="padding: 10px;"><span class="relationship-type">Has many</span></td>
+                    <td style="padding: 10px;">Steps generate events when executed</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            flowchart: {
+                useMaxWidth: false,
+                htmlLabels: true,
+                curve: 'basis'
+            }
+        });
+        
+        function switchTab(tabId) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Deactivate all tabs
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Activate selected tab and content
+            document.getElementById(tabId).classList.add('active');
+            document.querySelector(`.tab[onclick="switchTab('${tabId}')"]`).classList.add('active');
+        }
+    </script>
+</body>
+</html>

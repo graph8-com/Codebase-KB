@@ -1,0 +1,695 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.13">
+    
+    
+      
+        <title>Chapter 4: Engage Sequence - Graph8 Platform Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="light-blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter-4-engage-sequence" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Graph8 Platform Documentation" class="md-header__button md-logo" aria-label="Graph8 Platform Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Graph8 Platform Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Chapter 4: Engage Sequence
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Graph8 Platform Documentation" class="md-nav__button md-logo" aria-label="Graph8 Platform Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Graph8 Platform Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Chat UI
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Chat UI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chat-uui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chat-uui/01_thread/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Thread
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chat-uui/02_message/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Message
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chat-uui/03_composer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Composer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chat-uui/04_content_part/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Content Part
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chat-uui/05_runtime/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Runtime
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chat-uui/06_assistant_cloud/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assistant Cloud
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chat-uui/07_model_context/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Model Context
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chat-uui/08_tools_and_tool_ui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tools and Tool UI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chat-uui/09_markdown_text/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Markdown Text
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chat-uui/10_assistant_modal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assistant Modal
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#key-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Concepts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-a-simple-engage-sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      Building a Simple Engage Sequence
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#under-the-hood" class="md-nav__link">
+    <span class="md-ellipsis">
+      Under the Hood
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diving-deeper-into-the-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diving Deeper into the Code
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="chapter-4-engage-sequence">Chapter 4: Engage Sequence</h1>
+<p>Building on our knowledge of <a href="../01_goai_campaign/">GoAI Campaigns</a>, <a href="../02_goai_campaign_step/">GoAI Campaign Steps</a>, and <a href="../03_goai_campaign_message/">GoAI Campaign Messages</a>, let's explore the powerful concept of Engage Sequences.</p>
+<p>Imagine you want to nurture leads over time with a series of automated messages.  You might send a welcome email, followed by a product demo video link a few days later, and finally, a special offer a week after that.  Doing this manually for each lead would be tedious.  Engage Sequences automate this entire process, much like an automated email drip campaign.</p>
+<h2 id="key-concepts">Key Concepts</h2>
+<p>An Engage Sequence is like a sophisticated <a href="../01_goai_campaign/">GoAI Campaign</a> specifically designed for multi-step, automated communication.  Here’s a breakdown:</p>
+<ul>
+<li><strong>Enrollment:</strong> Contacts are enrolled in a sequence, similar to adding them to an email list.</li>
+<li><strong>Steps:</strong>  Just like <a href="../02_goai_campaign_step/">GoAI Campaign Steps</a>, an Engage Sequence consists of multiple steps, each representing a specific communication action (e.g., sending an email, SMS, making a call).</li>
+<li><strong>Automated Sending:</strong>  The system automatically sends messages at pre-defined intervals or based on specific triggers, like a contact opening an email or clicking a link.</li>
+</ul>
+<h2 id="building-a-simple-engage-sequence">Building a Simple Engage Sequence</h2>
+<p>Let's create a simple email sequence to welcome new leads:</p>
+<ol>
+<li>
+<p><strong>Create a Sequence:</strong> First, you create a new Engage Sequence and give it a descriptive name like "New Lead Welcome Sequence."</p>
+</li>
+<li>
+<p><strong>Add Steps:</strong> You add steps to the sequence, defining the type of communication and the content for each step. For example:</p>
+<p><div class="highlight"><pre><span></span><code><span class="c1"># Simplified example - Adding an email step</span>
+<span class="n">sequence_step1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Engage</span><span class="o">::</span><span class="no">SequenceStep</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Engage::EmailStep&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">wait_time</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="ss">wait_mode</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;minute&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1"># Send immediately</span>
+<span class="n">sequence_step2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Engage</span><span class="o">::</span><span class="no">SequenceStep</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Engage::EmailStep&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">wait_time</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="ss">wait_mode</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;day&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1"># Send after 3 days</span>
+</code></pre></div>
+This code creates two email steps. The first step sends an email immediately (<code>wait_time: 0</code>). The second step sends an email after a 3-day delay (<code>wait_time: 3</code>, <code>wait_mode: "day"</code>).  You'll define the actual email content using <a href="../06_engage_sequence_step_content/">Engage Sequence Step Content</a>.</p>
+</li>
+<li>
+<p><strong>Enroll Contacts:</strong>  You enroll contacts into your sequence. This is handled by <a href="../07_engage_sequence_membership/">Engage Sequence Membership</a>.</p>
+</li>
+</ol>
+<h2 id="under-the-hood">Under the Hood</h2>
+<p>When a contact is enrolled in an active Engage Sequence:</p>
+<div class="highlight"><pre><span></span><code>sequenceDiagram
+    participant User
+    participant Engage Sequence
+    participant Sequence Step
+    participant Go Engage
+    User-&gt;&gt;Engage Sequence: Enroll Contact
+    Activate Engage Sequence
+    loop For each step
+        Engage Sequence-&gt;&gt;Sequence Step: Execute Step
+        Sequence Step-&gt;&gt;Go Engage: Send Message
+        Go Engage--&gt;&gt;Sequence Step: Message Sent Confirmation
+    end
+</code></pre></div>
+<ol>
+<li><strong>Enroll Contact:</strong> A user is enrolled in the sequence.</li>
+<li><strong>Activate Engage Sequence:</strong> The sequence becomes active for the user.</li>
+<li><strong>Execute Step:</strong> The sequence executes each step in order, sending the corresponding message through Go Engage.</li>
+</ol>
+<h2 id="diving-deeper-into-the-code">Diving Deeper into the Code</h2>
+<p>The <code>Engage::Sequence</code> model (app/models/engage/sequence.rb) is at the heart of this functionality:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># app/models/engage/sequence.rb (simplified)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Engage</span><span class="o">::</span><span class="no">Sequence</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="no">ApplicationRecord</span>
+<span class="w">  </span><span class="n">has_many</span><span class="w"> </span><span class="ss">:sequence_steps</span>
+<span class="w">  </span><span class="c1"># ... other code ...</span>
+<span class="k">end</span>
+</code></pre></div>
+<p>The <code>has_many :sequence_steps</code> establishes the relationship between a sequence and its steps.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>This chapter introduced Engage Sequences, powerful tools for automated, multi-step communication. We covered the basic concepts and a simple example of creating an email sequence.  In the next chapter, we'll dive into the details of individual steps with <a href="../05_engage_sequence_step/">Engage Sequence Step</a>.</p>
+<hr />
+<p>Generated by <a href="https://github.com/The-Pocket/Tutorial-Codebase-Knowledge">AI Codebase Knowledge Builder</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+    
+  </body>
+</html>

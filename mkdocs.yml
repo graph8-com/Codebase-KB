@@ -1,16 +1,18 @@
-site_name: UUI Campaign & Sequencer Docs
+site_name: Graph8 Platform Documentation
 nav:
-  - Home: index.md
-  - GoAI Campaign: 01_goai_campaign.md
-  - GoAI Campaign Step: 02_goai_campaign_step.md
-  - GoAI Campaign Message: 03_goai_campaign_message.md
-  - Engage Sequence: 04_engage_sequence.md
-  - Engage Sequence Step: 05_engage_sequence_step.md
-  - Engage Sequence Step Content: 06_engage_sequence_step_content.md
-  - Engage Sequence Membership: 07_engage_sequence_membership.md
-  - Engage Sequence Event: 08_engage_sequence_event.md
-  - Engage Sequence OAuth Credential: 09_engage_sequence_oauth_credential.md
-docs_dir: output/uui
+  - Chat UI:
+    - Overview: chat-uui/index.md
+    - Thread: chat-uui/01_thread.md
+    - Message: chat-uui/02_message.md
+    - Composer: chat-uui/03_composer.md
+    - Content Part: chat-uui/04_content_part.md
+    - Runtime: chat-uui/05_runtime.md
+    - Assistant Cloud: chat-uui/06_assistant_cloud.md
+    - Model Context: chat-uui/07_model_context.md
+    - Tools and Tool UI: chat-uui/08_tools_and_tool_ui.md
+    - Markdown Text: chat-uui/09_markdown_text.md
+    - Assistant Modal: chat-uui/10_assistant_modal.md
+docs_dir: output
 site_dir: site
 theme:
   name: material

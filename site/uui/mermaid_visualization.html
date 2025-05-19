@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mermaid Diagram Visualization</title>
+  <!-- Mermaid CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({ startOnLoad: true });
+  </script>
+</head>
+<body>
+  <div class="mermaid" style="margin: 2rem;">
+    flowchart TD
+    A0["GoAI Campaign"]
+    A1["GoAI Campaign Step"]
+    A2["GoAI Campaign Message"]
+    A3["Engage Sequence"]
+    A4["Engage Sequence Step"]
+    A5["Engage Sequence Membership"]
+    A6["Engage Sequence Event"]
+    A7["Engage Sequence Step Content"]
+    A8["Engage Sequence OAuth Credential"]
+    A0 -- "Has many" --> A1
+    A0 -- "Has many" --> A2
+    A1 -- "Belongs to" --> A0
+    A3 -- "Has many" --> A4
+    A3 -- "Has many" --> A5
+    A3 -- "Has many" --> A8
+    A4 -- "Belongs to" --> A3
+    A4 -- "Has many" --> A7
+    A5 -- "Belongs to" --> A3
+    A5 -- "Has current" --> A4
+    A5 -- "Has many" --> A6
+    A6 -- "Belongs to" --> A5
+    A7 -- "Belongs to" --> A4
+    A8 -- "Belongs to" --> A3
+    A4 -- "Has many" --> A6
+  </div>
+</body>
+</html>
